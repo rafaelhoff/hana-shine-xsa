@@ -4,9 +4,9 @@
 	"version": "1.1.9",
 	"private": true,
 	"dependencies": {
-		"sap-xsenv": "1.2.2",
-		"sap-xsjs": "1.6.4",
-		"sap-xsodata" : "0.6.1"
+		"@sap/xsenv": "1.2.6",
+		"@sap/xsjs": "1.16.1",
+		"@sap/xsodata" : "2.1.0"
 	},
 	"engines": {
 	"node":"~4.x"

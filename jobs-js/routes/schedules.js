@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var winston = require('winston');
 var util = require('./util');
-var jobsc = require('sap-jobs-client');
+var jobsc = require('@sap/jobs-client');
 
 var logger;
 

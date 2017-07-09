@@ -1,13 +1,13 @@
 'use strict';
 var https = require('https');
-var xssec = require('sap-xssec');
+var xssec = require('@sap/xssec');
 var express = require('express');
 var passport = require('passport');
 //var sap_hdb_conn = require('sap-hdb-connection');
-var hdbext = require('sap-hdbext'); 
+var hdbext = require('@sap/hdbext'); 
 var routes = require('./routes/index');
 var winston = require('winston');
-var xsenv = require('sap-xsenv');
+var xsenv = require('@sap/xsenv');
 
 var PORT = process.env.PORT || 3000;
 var app = express();
@@ -21,7 +21,7 @@ winston.level = process.env.winston_level || 'error';
  * by defining a user defined service called 'uaa'.
  */
 passport.use('JWT', new xssec.JWTStrategy(xsenv.getServices({uaa:{tag:'xsuaa'}}).uaa));
-
+var hanaConfig = xsenv.getServices({hana:{tag:'hana'}}).hana;
 
 //use passport for authentication
 app.use(passport.initialize());
@@ -35,7 +35,7 @@ app.use(passport.initialize());
  */
 app.use('/',
     passport.authenticate('JWT', {session: false}),
-    hdbext.middleware(),
+    hdbext.middleware(hanaConfig),
     routes.datagen,
     routes.get,
     routes.reset);

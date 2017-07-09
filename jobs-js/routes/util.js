@@ -1,4 +1,4 @@
-var xsenv = require('sap-xsenv');
+var xsenv = require('@sap/xsenv');
 
 module.exports = {
 	callback: function(error, res, message) {

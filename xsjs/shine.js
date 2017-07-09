@@ -1,7 +1,7 @@
 'use strict';
 var https = require('https');
-var xsjs = require('sap-xsjs');
-var xsenv = require('sap-xsenv');
+var xsjs = require('@sap/xsjs');
+var xsenv = require('@sap/xsenv');
 var port = process.env.PORT || 3000;
 https.globalAgent.options.ca= xsenv.loadCertificates(); 
 
